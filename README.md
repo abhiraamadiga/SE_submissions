@@ -1,0 +1,26 @@
+# SE Submissions
+This repository contains my submissions and coursework for the Software Engineering course.
+
+**Student Name**: Abhiraam Adiga  
+**SRN**: PES1UG24CS015  
+
+## Course
+*   **Course**: Software Engineering
+*   **Semester**: Fifth Semester
+
+## Repository Structure
+```text
+SE-submissions/
+│
+├── Lab-1/
+│   ├── Requirements/
+│   │   └── requirements.docx
+│   │
+│   ├── UML/
+│   │   └── Use_Case_Diagram.pdf
+│   │
+│   └── Use-Case-Flow/
+│       └── use-case-flow.docx
+│
+└── README.md
+```

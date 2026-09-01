@@ -3,6 +3,7 @@ This repository contains my submissions and coursework for the Software Engineer
 
 **Student Name**: Abhiraam Adiga  
 **SRN**: PES1UG24CS015  
+**Section**: A
 
 ## Course
 *   **Course**: Software Engineering
@@ -22,5 +23,9 @@ SE-submissions/
 │   └── Use-Case-Flow/
 │       └── use-case-flow.docx
 │
+├── Lab-2/
+│   └── PES1UG24CS015_Jira_Lab2 .pdf
+│
 └── README.md
 ```
+

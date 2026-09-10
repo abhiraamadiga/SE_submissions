@@ -26,6 +26,11 @@ SE-submissions/
 ├── Lab-2/
 │   └── PES1UG24CS015_Jira_Lab2 .pdf
 │
+├── Lab3/
+│   ├── 015_Architecture_Justification.pdf
+│   ├── 015_Component_Diagram.png
+│   └── README.md
+│
 └── README.md
 ```
 

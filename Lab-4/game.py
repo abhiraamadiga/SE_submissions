@@ -52,6 +52,10 @@ class Game:
                     return
                 continue
 
+            # Task 4: Move-level feedback (occurs exactly once per actual move)
+            player_label = "Player X" if self.turn == "X" else "AI (O)"
+            print(f"{player_label} placed a disc in column {col + 1}.")
+
             # Task 2: Consistent game termination
             if self.board.winner(self.turn):
                 self.board.print()

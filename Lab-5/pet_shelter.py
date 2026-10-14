@@ -10,7 +10,17 @@ import sqlite3
 logger = logging.getLogger(__name__)
 
 conn = sqlite3.connect(":memory:")
-conn.execute("CREATE TABLE pets (id INTEGER PRIMARY KEY, name TEXT, species TEXT, age INTEGER, adopted INTEGER)")
+conn.execute(
+    """
+    CREATE TABLE pets (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        species TEXT,
+        age INTEGER,
+        adopted INTEGER
+    )
+    """
+)
 adoption_stats = {"count": 0}
 
 
@@ -43,7 +53,8 @@ def adopt(pet_id):
         pet_id: Unique identifier of the pet to adopt.
 
     Returns:
-        bool: True if pet was successfully adopted, False if not found or already adopted.
+        bool: True if adopted successfully, False if not found or
+            already adopted.
     """
     cur = conn.execute(
         "UPDATE pets SET adopted = 1 WHERE id = ? AND adopted = 0",
@@ -69,10 +80,13 @@ def oldest_available():
     """Find the name of the oldest pet currently available for adoption.
 
     Returns:
-        str or None: Name of the oldest unadopted pet, or None if no pets are available.
+        str or None: Name of the oldest unadopted pet, or None if
+            no pets are available.
     """
     try:
-        cur = conn.execute("SELECT name, age FROM pets WHERE adopted = 0 ORDER BY age DESC")
+        cur = conn.execute(
+            "SELECT name, age FROM pets WHERE adopted = 0 ORDER BY age DESC"
+        )
         row = cur.fetchone()
         if row is not None:
             return row[0]
@@ -102,7 +116,8 @@ def shelter_status():
     Returns:
         str: 'active' if any pets were adopted, otherwise 'quiet'.
     """
-    if adoption_stats["count"] > 0: return "active"
+    if adoption_stats["count"] > 0:
+        return "active"
     return "quiet"
 
 

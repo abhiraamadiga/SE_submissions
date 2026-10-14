@@ -69,27 +69,27 @@ Kiwi PET-8823 active
 
 ---
 
-## 4. Running Static Analysis & Generating Reports
+## 4. Running Static Analysis
 
-Run the following commands from within the `Lab-5/` directory to generate the static analysis reports:
+Run the tools directly from within the `Lab-5/` directory to print reports to the terminal:
 
-#### Windows (PowerShell / Command Prompt)
+#### Windows (PowerShell)
 ```powershell
 # Run Pylint
-& "..\.venv\Scripts\python.exe" -m pylint pet_shelter.py > pylint_after.txt
+& "..\.venv\Scripts\python.exe" -m pylint pet_shelter.py
 
 # Run Bandit (security audit)
-& "..\.venv\Scripts\python.exe" -m bandit -r pet_shelter.py > bandit_after.txt
+& "..\.venv\Scripts\python.exe" -m bandit -r pet_shelter.py
 
 # Run Flake8 (style and syntax audit)
-& "..\.venv\Scripts\python.exe" -m flake8 pet_shelter.py > flake8_after.txt
+& "..\.venv\Scripts\python.exe" -m flake8 pet_shelter.py
 ```
 
 #### Linux / macOS (Bash)
 ```bash
-pylint pet_shelter.py > pylint_after.txt
-bandit -r pet_shelter.py > bandit_after.txt
-flake8 pet_shelter.py > flake8_after.txt
+python -m pylint pet_shelter.py
+bandit -r pet_shelter.py
+flake8 pet_shelter.py
 ```
 
 ---
@@ -119,23 +119,23 @@ flake8 pet_shelter.py > flake8_after.txt
 
 ---
 
-## 6. Verification Results
+## 6. Static Analysis Before-and-After Summary
 
-| Tool | Baseline (Before) | Final (After) | Status |
+| Static Analysis Tool | Baseline (Before) | Final (After) | Status & Impact |
 |---|---|---|---|
-| **Pylint** | `3.95/10` | **`10.00/10`** | **Target Achieved (> 9.5/10)** |
-| **Bandit** | 3 issues (1 Medium, 2 Low) | **0 issues identified** | **All vulnerabilities resolved** |
-| **Flake8** | 5 violations (E501, E722, E701) | **0 violations** | **Clean PEP 8 compliance** |
+| **Pylint** | **`3.95/10`**<br>- `C0301`: Line too long (lines 5, 10, 27)<br>- `C0114`: Missing module docstring<br>- `C0116`: Missing function docstring (all functions)<br>- `C0103`: Invalid naming (camelCase functions & global variable)<br>- `W0102`: Dangerous mutable default `tags=[]`<br>- `C0209`: Formatting regular string instead of f-string/params<br>- `W0603`: Using `global adoption_count`<br>- `W0702`: Bare `except:` in `oldestAvailable`<br>- `W0718`: Broad exception `Exception` caught<br>- `C0321`: Multiple statements on single line | **`10.00/10`**<br>- 0 errors<br>- 0 warnings<br>- 0 refactor issues<br>- 0 convention notices | **Target Achieved (> 9.5/10)**<br>Full docstrings, eliminated global state, safe default arguments, and robust error handling. |
+| **Bandit** | **3 Issues**<br>- `B608` (Medium severity, Med confidence): SQL injection vector in `registerPet` (line 10)<br>- `B311` (Low severity, High confidence): Pseudo-random generator in `adoptionCode` (line 22)<br>- `B110` (Low severity, High confidence): Try-Except-Pass silent suppression (line 36) | **0 Issues**<br>- Total lines scanned: 107<br>- 0 low severity<br>- 0 medium severity<br>- 0 high severity | **All Security Findings Resolved**<br>Parameterized queries, `secrets.SystemRandom()`, and explicit error logging. |
+| **Flake8** | **5 Violations**<br>- `E501`: Line too long (113 > 79) at line 5<br>- `E501`: Line too long (116 > 79) at line 10<br>- `E501`: Line too long (103 > 79) at line 27<br>- `E722`: Do not use bare `except` at line 29<br>- `E701`: Multiple statements on one line at line 41 | **0 Violations**<br>- Clean PEP 8 compliance | **Clean PEP 8 Compliance**<br>Strict line-length adherence (<= 79 chars) and standard code indentation. |
 
 ---
 
 ## 7. Deliverables in `Lab-5/`
 
-- `pet_shelter.py`: Cleaned and refactored Python source code.
-- `requirements.txt`: Static analysis tool dependencies.
-- `issues.md`: Detailed documentation table of all identified and resolved issues.
-- `reflection.md`: Technical reflections on static analysis, tool differences, and workflows.
-- `pylint_before.txt` & `pylint_after.txt`: Complete baseline and final Pylint reports.
-- `bandit_before.txt` & `bandit_after.txt`: Complete baseline and final Bandit reports.
-- `flake8_before.txt` & `flake8_after.txt`: Complete baseline and final Flake8 reports.
-- `README.md`: Lab overview, setup, execution instructions, and verification summary.
+```text
+Lab-5/
+├── pet_shelter.py     # Cleaned, secure, and PEP 8 compliant source code
+├── issues.md          # Comprehensive issue documentation and remediation table
+├── reflection.md      # Answers to the lab reflection questions
+├── README.md          # Project documentation, execution commands, and analysis summary
+└── requirements.txt   # Pylint, Bandit, and Flake8 dependencies
+```

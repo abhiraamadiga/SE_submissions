@@ -18,9 +18,13 @@ This document records the security, correctness, code quality, and style issues 
 | **Multiple Statements on Single Line** (`E701`, `C0321`) | Style / Formatting (Error, Flake8; Convention, Pylint) | 41 | `if adoption_count > 0: return "active"` compressed a conditional and return statement into a single line, violating PEP 8 compound statement rules. | Split the condition and return statement onto separate indented lines. |
 | **Missing Module and Function Docstrings** (`C0114`, `C0116`) | Documentation / Quality (Convention, Pylint) | 1, 9, 15, 21, 25, 33, 40, 45 | The original module and its functions lacked docstrings explaining their purpose, parameters, return values, and behavior. | Added complete PEP 257 docstrings for the module and each individual function. |
 
-## Verification Summary
+## Verification Summary (Before vs After)
 
-All documented fixes were verified against the original baseline:
-- **Bandit**: Issues reduced from **3** (1 Medium, 2 Low) to **0**.
-- **Pylint**: Score increased from **3.95/10** to **10.00/10**.
-- **Flake8**: Violations reduced from **5** to **0**.
+All documented fixes were verified against the original baseline findings:
+
+| Tool | Baseline (Before Fixes) | Final (After Fixes) | Verification Status |
+|---|---|---|---|
+| **Pylint** | **`3.95/10`**<br>- `C0301`: Line too long (lines 5, 10, 27)<br>- `C0114`: Missing module docstring (line 1)<br>- `C0116`: Missing function docstrings (all functions)<br>- `C0103`: Invalid naming style (`adoption_count`, `registerPet`, `adoptionCode`, `oldestAvailable`, `clearUnadopted`, `shelterStatus`)<br>- `W0102`: Dangerous mutable default value `tags=[]` (line 9)<br>- `C0209`: String interpolation instead of parameterized/f-string (line 10)<br>- `W0603`: Using global statement `global adoption_count` (line 16)<br>- `W0702`: Bare exception handler `except:` (line 29)<br>- `W0718`: Broad exception caught `except Exception:` (line 36)<br>- `C0321`: Multiple statements on single line (line 41) | **`10.00/10`**<br>- 0 errors<br>- 0 warnings<br>- 0 refactor issues<br>- 0 conventions | **Target Achieved (> 9.5/10)**<br>Full docstrings, no mutable defaults, robust query result handling, and standard snake_case naming. |
+| **Bandit** | **3 Issues**<br>- `B608` (Medium severity, Med confidence): SQL injection vector through string query formatting (line 10)<br>- `B311` (Low severity, High confidence): Insecure PRNG `random.randint` for adoption tokens (line 22)<br>- `B110` (Low severity, High confidence): `try...except Exception: pass` silent suppression (lines 36–37) | **0 Issues Identified**<br>- Scanned 107 lines of code<br>- 0 low severity<br>- 0 medium severity<br>- 0 high severity | **All Vulnerabilities Resolved**<br>Parameterized queries, cryptographically secure `secrets.SystemRandom()`, and structured error logging. |
+| **Flake8** | **5 Violations**<br>- `E501`: Line too long (113 > 79 characters) at line 5<br>- `E501`: Line too long (116 > 79 characters) at line 10<br>- `E501`: Line too long (103 > 79 characters) at line 27<br>- `E722`: Do not use bare `except` at line 29<br>- `E701`: Multiple statements on one line at line 41 | **0 Violations**<br>- 100% PEP 8 compliant | **Clean PEP 8 Compliance**<br>All lines wrapped under 79 characters, compound statements split, and bare except removed. |
+

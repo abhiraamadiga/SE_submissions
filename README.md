@@ -39,8 +39,14 @@ SE_submissions/
 │   └── videos/
 │
 ├── Lab-5/
+│   ├── bandit_report_after.txt
+│   ├── bandit_report_before.txt
+│   ├── flake8_report_after.txt
+│   ├── flake8_report_before.txt
 │   ├── issues.md
 │   ├── pet_shelter.py
+│   ├── pylint_report_after.txt
+│   ├── pylint_report_before.txt
 │   ├── README.md
 │   ├── reflection.md
 │   └── requirements.txt

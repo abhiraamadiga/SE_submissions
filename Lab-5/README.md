@@ -69,27 +69,27 @@ Kiwi PET-8823 active
 
 ---
 
-## 4. Running Static Analysis
+## 4. Running Static Analysis & Generating Reports
 
-Run the tools directly from within the `Lab-5/` directory to print reports to the terminal:
+Run the following commands from within the `Lab-5/` directory to generate the static analysis reports:
 
 #### Windows (PowerShell)
 ```powershell
 # Run Pylint
-& "..\.venv\Scripts\python.exe" -m pylint pet_shelter.py
+& "..\.venv\Scripts\python.exe" -m pylint pet_shelter.py > pylint_report_after.txt
 
 # Run Bandit (security audit)
-& "..\.venv\Scripts\python.exe" -m bandit -r pet_shelter.py
+& "..\.venv\Scripts\python.exe" -m bandit -r pet_shelter.py > bandit_report_after.txt
 
 # Run Flake8 (style and syntax audit)
-& "..\.venv\Scripts\python.exe" -m flake8 pet_shelter.py
+& "..\.venv\Scripts\python.exe" -m flake8 pet_shelter.py > flake8_report_after.txt
 ```
 
 #### Linux / macOS (Bash)
 ```bash
-python -m pylint pet_shelter.py
-bandit -r pet_shelter.py
-flake8 pet_shelter.py
+pylint pet_shelter.py > pylint_report_after.txt
+bandit -r pet_shelter.py > bandit_report_after.txt
+flake8 pet_shelter.py > flake8_report_after.txt
 ```
 
 ---
@@ -133,9 +133,15 @@ flake8 pet_shelter.py
 
 ```text
 Lab-5/
-├── pet_shelter.py     # Cleaned, secure, and PEP 8 compliant source code
-├── issues.md          # Comprehensive issue documentation and remediation table
-├── reflection.md      # Answers to the lab reflection questions
-├── README.md          # Project documentation, execution commands, and analysis summary
-└── requirements.txt   # Pylint, Bandit, and Flake8 dependencies
+├── pet_shelter.py             # Cleaned, secure, and PEP 8 compliant source code
+├── issues.md                  # Comprehensive issue documentation and remediation table
+├── reflection.md              # Answers to the lab reflection questions
+├── README.md                  # Project documentation, execution commands, and analysis summary
+├── requirements.txt           # Pylint, Bandit, and Flake8 dependencies
+├── pylint_report_before.txt   # Baseline Pylint analysis report (Score: 3.95/10)
+├── pylint_report_after.txt    # Final Pylint analysis report (Score: 10.00/10)
+├── bandit_report_before.txt   # Baseline Bandit security report (3 issues)
+├── bandit_report_after.txt    # Final Bandit security report (0 issues)
+├── flake8_report_before.txt   # Baseline Flake8 style report (5 violations)
+└── flake8_report_after.txt    # Final Flake8 style report (0 violations)
 ```

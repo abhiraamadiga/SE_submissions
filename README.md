@@ -52,21 +52,18 @@ SE_submissions/
 │   └── requirements.txt
 │
 ├── Lab 6/
+│   ├── reports/
+│   │   ├── branch_coverage_report.txt
+│   │   └── code_coverage_report.txt
+│   ├── screenshots/
+│   │   ├── branch_coverage_screenshot.png
+│   │   └── code_coverage_screenshot.png
 │   ├── BranchCoverageTest_student_grades.py
-│   ├── BranchCoverageTest_student_grades_application.py
 │   ├── CodeCoverageTest_student_grades.py
-│   ├── CodeCoverageTest_student_grades_application.py
-│   ├── branch_coverage_report.txt
-│   ├── branch_coverage_screenshot.png
-│   ├── code_coverage_report.txt
-│   ├── code_coverage_screenshot.png
-│   ├── generate_artifacts.py
-│   ├── initial_coverage_report.txt
-│   ├── initial_coverage_screenshot.png
-│   ├── README.md
-│   ├── requirements.txt
+│   ├── test_student_grades.py
 │   ├── student_grades.py
-│   └── test_student_grades.py
+│   ├── requirements.txt
+│   └── README.md
 │
 └── README.md
 ```

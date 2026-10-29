@@ -8,7 +8,27 @@
 
 ---
 
-## 1. Objectives
+## 1. Directory Structure
+
+```text
+Lab 6/
+├── reports/
+│   ├── branch_coverage_report.txt
+│   └── code_coverage_report.txt
+├── screenshots/
+│   ├── branch_coverage_screenshot.png
+│   └── code_coverage_screenshot.png
+├── BranchCoverageTest_student_grades.py
+├── CodeCoverageTest_student_grades.py
+├── test_student_grades.py
+├── student_grades.py
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 2. Objectives
 
 - Understand the fundamental difference between **Code (Line/Statement) Coverage** and **Branch Coverage**.
 - Use Python's `coverage` tool to measure, analyze, and systematically improve test coverage.
@@ -18,12 +38,11 @@
 
 ---
 
-## 2. Software Requirements & Setup
+## 3. Software Requirements & Setup
 
 - **Python**: 3.12.10
 - **pytest**: 9.2.0
 - **coverage**: 7.17.0
-- **Pillow**: 12.0.0 (used for rendering high-fidelity terminal output screenshots)
 
 Install dependencies:
 ```powershell
@@ -32,7 +51,7 @@ pip install -r requirements.txt
 
 ---
 
-## 3. Code Coverage vs. Branch Coverage
+## 4. Code Coverage vs. Branch Coverage
 
 | Coverage Type | Definition | Key Question Answered | Limitations |
 |---|---|---|---|
@@ -41,7 +60,7 @@ pip install -r requirements.txt
 
 ---
 
-## 4. Module Under Test (`student_grades.py`)
+## 5. Module Under Test (`student_grades.py`)
 
 The application module contains three core functions:
 
@@ -71,7 +90,7 @@ The application module contains three core functions:
 
 ---
 
-## 5. Phase 1: Baseline Analysis (Initial Starter State)
+## 6. Phase 1: Baseline Analysis (Initial Starter State)
 
 The repository initially came with two basic test cases in `test_student_grades.py`.
 
@@ -93,16 +112,11 @@ TOTAL                       39     24    38%
 
 Initial line coverage was only **27%** (24 statements unreached). Running branch coverage (`coverage run --branch ...`) reported **22%** branch coverage (22 out of 26 branches missed).
 
-### Terminal Screenshot
-![Initial Coverage Screenshot](initial_coverage_screenshot.png)
-
 ---
 
-## 6. Phase 2: Code Coverage Analysis (100% Line Coverage)
+## 7. Phase 2: Code Coverage Analysis (100% Line Coverage)
 
-### Deliverables:
-- `CodeCoverageTest_student_grades.py`
-- `CodeCoverageTest_student_grades_application.py`
+### Deliverable: `CodeCoverageTest_student_grades.py`
 
 ### Test Case Design
 A suite of 14 targeted test cases was created to execute every statement across all three functions:
@@ -140,7 +154,7 @@ TOTAL                                   65      0   100%
 Achieved **100% Code Coverage** (33/33 statements executed).
 
 ### Terminal Screenshot
-![Code Coverage Screenshot](code_coverage_screenshot.png)
+![Code Coverage Screenshot](screenshots/code_coverage_screenshot.png)
 
 > [!NOTE]
 > **Why 100% Code Coverage is Not Sufficient**:
@@ -150,11 +164,10 @@ Achieved **100% Code Coverage** (33/33 statements executed).
 
 ---
 
-## 7. Phase 3: Branch Coverage Analysis (100% Branch Coverage)
+## 8. Phase 3: Branch Coverage Analysis (100% Branch Coverage)
 
 ### Deliverables:
 - `BranchCoverageTest_student_grades.py`
-- `BranchCoverageTest_student_grades_application.py`
 - `test_student_grades.py` (complete suite)
 
 ### Decision Branch Matrix & Edge Case Design
@@ -219,11 +232,11 @@ TOTAL                                     76      0     26      0   100%
 Achieved **100% Statement Coverage** and **100% Branch Coverage** (0 missing statements, 0 missing branches).
 
 ### Terminal Screenshot
-![Branch Coverage Screenshot](branch_coverage_screenshot.png)
+![Branch Coverage Screenshot](screenshots/branch_coverage_screenshot.png)
 
 ---
 
-## 8. Summary Comparison Matrix
+## 9. Summary Comparison Matrix
 
 | Metric | Initial Baseline | Code Coverage Suite | Branch Coverage Suite | Target / Minimum |
 |---|:---:|:---:|:---:|:---:|
@@ -235,26 +248,19 @@ Achieved **100% Statement Coverage** and **100% Branch Coverage** (0 missing sta
 
 ---
 
-## 9. Deliverables & Evaluation Checklist
+## 10. Deliverables & Evaluation Checklist
 
 - [x] **Terminal Output Screenshots**:
-  - `code_coverage_screenshot.png`: Terminal output for Code Coverage analysis (&ge; 90%).
-  - `branch_coverage_screenshot.png`: Terminal output for Branch Coverage analysis (&ge; 90%).
-  - `initial_coverage_screenshot.png`: Baseline terminal screenshot for completeness.
+  - `screenshots/code_coverage_screenshot.png`: Terminal output for Code Coverage analysis (&ge; 90%).
+  - `screenshots/branch_coverage_screenshot.png`: Terminal output for Branch Coverage analysis (&ge; 90%).
 - [x] **Code Coverage Test Cases**:
   - `CodeCoverageTest_student_grades.py`
-  - `CodeCoverageTest_student_grades_application.py`
 - [x] **Branch Coverage Test Cases**:
   - `BranchCoverageTest_student_grades.py`
-  - `BranchCoverageTest_student_grades_application.py`
 - [x] **Consolidated Pytest Runner**:
-  - `test_student_grades.py` (29 comprehensive tests)
+  - `test_student_grades.py` (31 comprehensive tests)
 - [x] **Text Reports**:
-  - `code_coverage_report.txt`
-  - `branch_coverage_report.txt`
-  - `initial_coverage_report.txt`
+  - `reports/code_coverage_report.txt`
+  - `reports/branch_coverage_report.txt`
 - [x] **Version Control**:
-  - Minimum 2 distinct commits:
-    1. Commit 1: Code coverage test cases, report, and screenshot.
-    2. Commit 2: Branch coverage test cases, report, screenshot, and complete documentation.
-  - Pushed to `origin/main`.
+  - Distinct commits pushed to `origin/main`.

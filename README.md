@@ -51,6 +51,23 @@ SE_submissions/
 │   ├── reflection.md
 │   └── requirements.txt
 │
+├── Lab 6/
+│   ├── BranchCoverageTest_student_grades.py
+│   ├── BranchCoverageTest_student_grades_application.py
+│   ├── CodeCoverageTest_student_grades.py
+│   ├── CodeCoverageTest_student_grades_application.py
+│   ├── branch_coverage_report.txt
+│   ├── branch_coverage_screenshot.png
+│   ├── code_coverage_report.txt
+│   ├── code_coverage_screenshot.png
+│   ├── generate_artifacts.py
+│   ├── initial_coverage_report.txt
+│   ├── initial_coverage_screenshot.png
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── student_grades.py
+│   └── test_student_grades.py
+│
 └── README.md
 ```
 
@@ -63,5 +80,4 @@ SE_submissions/
 | **Lab-3** | Software Architecture Design | Component diagrams and architectural pattern justifications. |
 | **Lab-4** | LLM-Assisted Programming | Game logic, AI move selection, and state validation in Python Connect Four. |
 | **Lab-5** | Static Code Analysis | Code quality, vulnerability scanning, and PEP 8 enforcement using Pylint, Bandit, and Flake8. |
-
-
+| **Lab 6** | Code & Branch Coverage Analysis | Measuring line and branch coverage with pytest and coverage.py on student grades module, reaching 100% coverage. |
